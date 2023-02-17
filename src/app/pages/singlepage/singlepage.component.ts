@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {data} from '../../../assets/data'
+import { ActivatedRoute,Router } from '@angular/router';
+import{HeroService} from 'src/app/hero.service';
+import {data} from '../../../assets/data';
 @Component({
   selector: 'app-singlepage',
   templateUrl: './singlepage.component.html',
@@ -7,6 +9,9 @@ import {data} from '../../../assets/data'
 })
 export class SinglepageComponent 
 {
+  constructor(private router:Router, private hero:HeroService){}
+  data=this.hero.giveData();
+
   single:any 
   ngOnInit(){
 let id=Number(localStorage.getItem('id'))
